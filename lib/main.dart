@@ -34,6 +34,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   List<String> titleList =['amazon','楽天','Yahoo!'];//変数の定義
+  List<String> id =['amazonId','楽天Id','YahooId'];
+  List<String> pass =['amazonPass','楽天Pass','YahooPass'];
   int _counter = 0;
 
   void _incrementCounter() {
@@ -57,10 +59,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   leading: const Icon(Icons.key),
                   title: Text(titleList[index]),
                   onTap: (){
+                    print(id);
                     print('リストがタップされました');
                     //画面遷移の処理を記述
                     Navigator.push(context,MaterialPageRoute(
-                        builder: (context) => NextPage(titleList[index])));
+                        builder: (context) => NextPage(
+                            titleList[index],
+                          id[index],
+                          pass[index],
+                        )
+                    )
+                    );
                   },
                 ),
                 const Divider(
@@ -69,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ],
             );
-          }
+          },
       ),
       floatingActionButton: FloatingActionButton(
         //ボタンが押された時の処理
